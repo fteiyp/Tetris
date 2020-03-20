@@ -1,0 +1,52 @@
+README Tetris
+
+HANDIN:
+This is my final handin of Tetris, I do not intend to turn in a further version.
+
+DESIGN CHOICES:
+This version of Tetris was written with the following classes: the App class, the PaneOrganizer class, the Game Class,
+the Piece class, the TetrisSquare class, and the Constants class.
+
+The App class uses the start method to instantiate a new PaneOrganizer, then instantiate the scene by 
+passing the borderpane from the PaneOrganizer's borderpane accessor method as an argument. Finally, the 
+stage is told to set the scene and show.
+
+The PaneOrganizer class has the method getBorderPane which returns the borderpane for the App 
+class to display. It adds the gamePane and bottomPane from the game class to the borderPane.
+
+I chose to make tetris with a single piece class that generates each piece depending on the values put in by the
+game class upon instantiation. I thought this method was quick and allowed for the game class to quickly check whether
+the next piece would be put in occupied space to end the game. There are lots of parameters for the piece but its fast overall.
+The Game class has most of the game logic. The game class is contained by the paneOrganizer. When starting, the game
+instantiates a piece with the makeNewPiece method. This method uses a switch to assign the values of x an y of the 
+pieces square depending on the piece. It also checks that the position it would put the new piece at is not occupied
+by any squares; this instead ends the game. The game class has a time handler that carries out most of the game animation. 
+The timeHandler calls the methods: checkTopLine() dropPieceDown() clearLine(). checkTopLine ends the game if there are 
+squares in the top line. clearLine looks for full lines and clears them and shifts everything above them down if they
+exist. dropPieceDown moves the piece down if there is nothing below the piece. If there is stuff below the piece, the
+piece's square are put into the array and a new piece is created. The keyhandler handles all the user input. The up key
+rotates the piece, left and right and down shift the piece in their respective directions, space drops the piece all the
+way down. Pressing P pauses the game and displays "pause" in the bottom pane. When game over is called, the timeline
+is stopped, the keyhandler is ended, and a gameover label is displayed.
+
+The Piece class has accessor methods for retrieving the individual squares and movement methods. The constructor
+takes in all the x and y values for its squares and sets its square's position's accordingly. It also takes in and sets
+the color of all the squares. This input depends on the switch in the makenewPiece method in the game class. Rotate uses mathematical
+equations to rotate the squares about the 3rd square. shiftLeft, shiftRight, and dropPiece shift the piece by setting its position equal
+to its last position, plus or minus a squares length in X or Y.
+
+The TetrisSquare class is a simple wrapper class that helps create starting values (height width and color) for the squares
+instantiated and a method (setLocation) for simplifying movement.
+
+The constants class is abstract and stores the side length of the square (30 pixels).
+
+EXTRA CREDIT:
+The game class keeps track of score by adding 1 to the score every time a line was completed.
+This score is displayed in a label in the bottomPane by having a method update the score to increase
+by one - the scoreLabel displays this number as a string in the bottom pane.
+The game also increases in speed and thus difficulty as more lines are completed. This is carried out by having
+the timeframe's rate changed to be equal to 1+0.05*score after each completed line.
+
+KNOWN BUGS:
+There are no known bugs in Tetris. I autoformatted with cntrl*shift*F and it made some stuff look weird to me but I lost
+points for not doing that last time so I left it.
