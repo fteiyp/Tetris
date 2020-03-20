@@ -1,8 +1,5 @@
 README Tetris
 
-HANDIN:
-This is my final handin of Tetris, I do not intend to turn in a further version.
-
 DESIGN CHOICES:
 This version of Tetris was written with the following classes: the App class, the PaneOrganizer class, the Game Class,
 the Piece class, the TetrisSquare class, and the Constants class.
@@ -40,13 +37,9 @@ instantiated and a method (setLocation) for simplifying movement.
 
 The constants class is abstract and stores the side length of the square (30 pixels).
 
-EXTRA CREDIT:
+Additional Features:
 The game class keeps track of score by adding 1 to the score every time a line was completed.
 This score is displayed in a label in the bottomPane by having a method update the score to increase
 by one - the scoreLabel displays this number as a string in the bottom pane.
 The game also increases in speed and thus difficulty as more lines are completed. This is carried out by having
 the timeframe's rate changed to be equal to 1+0.05*score after each completed line.
-
-KNOWN BUGS:
-There are no known bugs in Tetris. I autoformatted with cntrl*shift*F and it made some stuff look weird to me but I lost
-points for not doing that last time so I left it.
